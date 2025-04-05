@@ -20,7 +20,17 @@ class MULTIPLAYERRACINGCAR_API UMultiplayerSessionsSubsystem : public UGameInsta
 public:
 	UMultiplayerSessionsSubsystem();
 
+protected:
+	UFUNCTION(BlueprintCallable, Category = "Multiplayer")
+	void CreateSession();
+
+	// delegate callbacks
+	void OnCreateSessionComplete(FName SessionName, bool bWasSuccessful);
+
 private:
 	IOnlineSubsystem* OnlineSubsystem;
 	IOnlineSessionPtr SessionInterface;
+
+	// delegates
+	FOnCreateSessionCompleteDelegate OnCreateSessionCompleteDelegate;
 };
