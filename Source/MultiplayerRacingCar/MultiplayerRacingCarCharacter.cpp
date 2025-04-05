@@ -10,7 +10,6 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
-#include "OnlineSubsystem.h"
 
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -54,21 +53,6 @@ AMultiplayerRacingCarCharacter::AMultiplayerRacingCarCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
-}
-
-void AMultiplayerRacingCarCharacter::BeginPlay()
-{
-	Super::BeginPlay();
-
-	IOnlineSubsystem* OnlineSubsystem = IOnlineSubsystem::Get();
-	if (OnlineSubsystem)
-	{
-		IOnlineSessionPtr OnlineSession = OnlineSubsystem->GetSessionInterface();
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Red, OnlineSubsystem->GetSubsystemName().ToString());
-		}
-	}
 }
 
 //////////////////////////////////////////////////////////////////////////
