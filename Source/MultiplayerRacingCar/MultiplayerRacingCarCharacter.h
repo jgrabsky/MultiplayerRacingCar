@@ -7,6 +7,7 @@
 #include "Logging/LogMacros.h"
 #include "MultiplayerRacingCarCharacter.generated.h"
 
+
 class USpringArmComponent;
 class UCameraComponent;
 class UInputMappingContext;
@@ -62,6 +63,8 @@ protected:
 	virtual void NotifyControllerChanged() override;
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	virtual void BeginPlay() override;
 
 public:
 	/** Returns CameraBoom subobject **/
